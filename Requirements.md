@@ -16,3 +16,4 @@
 - VSCode
 - Azure AI Foundry
 - Python
+- Figma(?)
