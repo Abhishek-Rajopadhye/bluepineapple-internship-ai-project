@@ -10,6 +10,16 @@ openai.api_key = "your-openai-api-key"
 @routes_bp.route("/copilot", methods=["POST"])
 @jwt_required()
 def copilot_chat():
+    """
+    Endpoint to handle chat requests to the Copilot AI model.
+    This endpoint expects a POST request with a JSON payload containing a "message" field.
+    It uses the OpenAI GPT-4 model to generate a response based on the user's message.
+    Returns:
+        JSON response containing the AI-generated reply or an error message.
+    Raises:
+        400 Bad Request: If no message is provided in the request.
+        500 Internal Server Error: If there is an issue with the OpenAI API call or other exceptions.
+    """
     data = request.json
     user_message = data.get("message", "")
 
@@ -29,6 +39,19 @@ def copilot_chat():
 @routes_bp.route("/call-technician", methods=["POST"])
 @jwt_required()
 def call_technician():
+    """
+    Initiates a call to a technician using the Twilio API.
+    This function retrieves the customer's phone number from the JSON request data,
+    validates it, and then uses the Twilio API to initiate a call to the provided number.
+    The call will play a message indicating that the customer is being connected to a technician.
+    Returns:
+        Response: A JSON response indicating the result of the call initiation.
+                  If the phone number is not provided, returns an error message with a 400 status code.
+                  If the call is successfully initiated, returns a success message with the call SID.
+    Raises:
+        KeyError: If the required Twilio configuration keys are not found in the current app config.
+    """
+    
     data = request.json
     customer_phone = data.get("phone")
 
