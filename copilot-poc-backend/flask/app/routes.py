@@ -2,10 +2,11 @@ from flask import Blueprint, request, jsonify, current_app
 from flask_jwt_extended import jwt_required
 from twilio.rest import Client
 import openai
+import os
 
 routes_bp = Blueprint("routes", __name__)
 
-openai.api_key = "your-openai-api-key"
+openai.api_key = os.getenv("OPENAI_API_SECRET_KEY")
 
 @routes_bp.route("/copilot", methods=["POST"])
 @jwt_required()

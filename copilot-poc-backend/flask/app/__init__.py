@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from config import Config
+from app.config import Config
 from app.db import db
 from app.auth import auth_bp
 from app.routes import routes_bp

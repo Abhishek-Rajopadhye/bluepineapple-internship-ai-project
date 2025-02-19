@@ -15,6 +15,6 @@
 
 - VSCode
 - Copilot Studio
-- ReactJS Native
-- Python(?)
+- ReactJS
+- Python Flask/FastAPI
 - Figma(?)
