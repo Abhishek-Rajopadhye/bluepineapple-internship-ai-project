@@ -15,6 +15,6 @@
 
 - VSCode
 - Copilot Studio
-- Android Studio(?)
+- ReactJS Native
 - Python(?)
 - Figma(?)
