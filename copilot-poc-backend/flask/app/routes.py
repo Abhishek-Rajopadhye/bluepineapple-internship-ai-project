@@ -6,10 +6,13 @@ import os
 
 routes_bp = Blueprint("routes", __name__)
 
-openai.api_key = os.getenv("OPENAI_API_SECRET_KEY")
+api_key = os.getenv("OPENROUTER_API_KEY")
+client = openai.OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=api_key
+)
 
 @routes_bp.route("/copilot", methods=["POST"])
-@jwt_required()
 def copilot_chat():
     """
     Endpoint to handle chat requests to the Copilot AI model.
@@ -24,21 +27,28 @@ def copilot_chat():
     data = request.json
     user_message = data.get("message", "")
 
+    chat_completion = client.chat.completions.create(
+        extra_body={},
+        model="google/gemini-2.0-pro-exp-02-05:free",
+        messages=[
+            {
+                "role": "user",
+                "content": user_message
+            }
+        ]
+    )
+    reply = chat_completion.choices[0].message.content
+
     if not user_message:
         return jsonify({"error": "No message provided"}), 400
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": user_message}]
-        )
-        return jsonify({"reply": response["choices"][0]["message"]["content"]})
+        return jsonify({"reply": reply})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
 @routes_bp.route("/call-technician", methods=["POST"])
-@jwt_required()
 def call_technician():
     """
     Initiates a call to a technician using the Twilio API.
@@ -54,10 +64,7 @@ def call_technician():
     """
     
     data = request.json
-    customer_phone = data.get("phone")
-
-    if not customer_phone:
-        return jsonify({"error": "Phone number required"}), 400
+    customer_phone = data.get("phone") if data else "+919767724238"
 
     client = Client(current_app.config["TWILIO_ACCOUNT_SID"], current_app.config["TWILIO_AUTH_TOKEN"])
     call = client.calls.create(
