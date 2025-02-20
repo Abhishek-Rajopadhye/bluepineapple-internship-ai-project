@@ -619,6 +619,9 @@
   .text-white {
     color: var(--color-white);
   }
+  .md-5{
+    margin-bottom: 5px;
+  }
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

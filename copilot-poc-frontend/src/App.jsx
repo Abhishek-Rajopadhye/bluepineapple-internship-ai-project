@@ -68,7 +68,7 @@ function App() {
             <div className="flex-auto overflow-y-auto p-4 bg-gray-800">
                 {messages.map((msg, index) => (
                 <div key={index} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                    <span className={`px-4 py-2 rounded-lg text-sm border m-5 ${msg.role === "user" ? "bg-blue-500 border-blue-700 text-white" : "bg-gray-700 border-gray-500 text-white"}`}>{msg.text}</span>
+                    <span className={`px-4 py-2 rounded-lg text-sm border md-5 ${msg.role === "user" ? "bg-blue-500 border-blue-700 text-white" : "bg-gray-700 border-gray-500 text-white"}`}>{msg.text}</span>
                 </div>
                 ))}
             </div>
