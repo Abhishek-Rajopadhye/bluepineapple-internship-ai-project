@@ -37,7 +37,7 @@ const ChatBox = () => {
 
         try {
             const token = localStorage.getItem('access_token');
-            const response = await axios.post("http://localhost:5000/api/copilot", 
+            const response = await axios.post("http://localhost:5000/copilot", 
                 { message: input }, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -59,7 +59,7 @@ const ChatBox = () => {
     const callTechnician = async () => {
         try {
             const token = localStorage.getItem('access_token');
-            const response = await axios.post("http://localhost:5000/api/call-technician", 
+            const response = await axios.post("http://localhost:5000/call-technician", 
                 {}, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
