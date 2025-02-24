@@ -43,7 +43,7 @@ def register():
         user = User(username=data["emailId"], password_hash=hashed_password)
         db.session.add(user)
         db.session.commit()
-        return jsonify({"message": "User registered successfully"}), 201
+        return jsonify({"message": "User registered successfully"}), 200
     except Exception as exception:
         return jsonify({"error": str(exception)}), 500
 
@@ -58,7 +58,6 @@ def login():
     Raises:
         401: Invalid Credentials
         500: Internal Server Error. If there is any error duringh login.
-
     """
     try:
         data = request.json

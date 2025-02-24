@@ -55,6 +55,8 @@ function App() {
                 <Login onLoginSuccess={() => {
                     setIsLoginSuccess(true);
                     setIsRegistrationComplete(false);
+                    setShowRegister(false);
+                    setShowLogin(false);
                 }} onClose={()=>{
                     setShowLogin(false);
                 }} />

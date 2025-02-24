@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Send, PhoneCall } from "lucide-react";
-
+import ReactMarkdown from "react-markdown";
 /**
  * The main chatbox component.
  * @component
@@ -37,11 +37,11 @@ const ChatBox = () => {
 
         try {
             const token = localStorage.getItem('access_token');
-            const response = await axios.post("http://localhost:5000/api/copilot", 
+            const response = await axios.post("http://localhost:5000/api/llm", 
                 { message: input }, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            setMessages([...newMessages, { role: "copilot", text: response.data.reply }]);
+            setMessages([...newMessages, { role: "llm", text: response.data.reply }]);
         } catch (error) {
             console.error("Error fetching response:", error);
         } finally {
@@ -74,7 +74,9 @@ const ChatBox = () => {
             <div className="flex-auto overflow-y-auto p-4 bg-gray-800">
                 {messages.map((msg, index) => (
                 <div key={index} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                    <span className={`px-4 py-2 rounded-lg text-sm border md-5 ${msg.role === "user" ? "bg-blue-500 border-blue-700 text-white" : "bg-gray-700 border-gray-500 text-white"}`}>{msg.text}</span>
+                    <span className={`px-4 py-2 rounded-lg text-sm border m-5 ${msg.role === "user" ? "bg-blue-500 border-blue-700 text-white" : "bg-gray-700 border-gray-500 text-white"}`}>
+                        <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    </span>
                 </div>
                 ))}
             </div>

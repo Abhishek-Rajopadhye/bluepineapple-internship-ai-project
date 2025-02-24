@@ -13,12 +13,12 @@ client = openai.OpenAI(
 )
 
 @jwt_required
-@routes_bp.route("/copilot", methods=["POST"])
-def copilot_chat():
+@routes_bp.route("/llm", methods=["POST"])
+def llm_chat():
     """
-    Endpoint to handle chat requests to the Copilot AI model.
+    Endpoint to handle chat requests to the LLM AI model.
     This endpoint expects a POST request with a JSON payload containing a "message" field.
-    It uses the OpenAI GPT-4 model to generate a response based on the user's message.
+    It uses the llm model to generate a response based on the user's message.
     Returns:
         JSON response containing the AI-generated reply or an error message.
     Raises:
@@ -29,13 +29,14 @@ def copilot_chat():
         deepseek/deepseek-r1:free
         cognitivecomputations/dolphin3.0-r1-mistral-24b:free
         google/gemini-2.0-pro-exp-02-05:free
+        meta-llama/llama-3.3-70b-instruct:free
     """
     data = request.json
     user_message = data.get("message", "")
 
     chat_completion = client.chat.completions.create(
         extra_body={},
-        model="deepseek/deepseek-r1-distill-llama-70b:free",
+        model="meta-llama/llama-3.3-70b-instruct:free",
         messages=[
             {
                 "role": "user",
@@ -44,7 +45,6 @@ def copilot_chat():
         ]
     )
     reply = chat_completion.choices[0].message.content
-
     if not user_message:
         return jsonify({"error": "No message provided"}), 400
 
