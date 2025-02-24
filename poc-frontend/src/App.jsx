@@ -34,13 +34,13 @@ function App() {
     };
 
     return (
-        <div>
+        <div className="flex flex-col h-screen w-screen bg-gray-900 text-white">
             {isLoginSuccess && (
                 <ChatBox />
             )}
             {!isLoginSuccess && !showRegister && !showLogin && !isRegistrationComplete && (
                 <div>
-                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button>
+                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button> / 
                     <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleRegisterClick}>Register</button>
                 </div>
             )}
