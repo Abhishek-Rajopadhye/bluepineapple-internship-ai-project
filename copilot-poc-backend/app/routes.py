@@ -21,15 +21,20 @@ def copilot_chat():
     Returns:
         JSON response containing the AI-generated reply or an error message.
     Raises:
-        400 Bad Request: If no message is provided in the request.
-        500 Internal Server Error: If there is an issue with the OpenAI API call or other exceptions.
+        400 : Bad Request. If no message is provided in the request.
+        500 : Internal Server Error. If there is an issue with the OpenAI API call or other exceptions.
+    Models:
+        deepseek/deepseek-r1-distill-llama-70b:free
+        deepseek/deepseek-r1:free
+        cognitivecomputations/dolphin3.0-r1-mistral-24b:free
+        google/gemini-2.0-pro-exp-02-05:free
     """
     data = request.json
     user_message = data.get("message", "")
 
     chat_completion = client.chat.completions.create(
         extra_body={},
-        model="google/gemini-2.0-pro-exp-02-05:free",
+        model="deepseek/deepseek-r1-distill-llama-70b:free",
         messages=[
             {
                 "role": "user",
@@ -44,8 +49,8 @@ def copilot_chat():
 
     try:
         return jsonify({"reply": reply})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    except Exception as exception:
+        return jsonify({"error": str(exception)}), 500
 
 
 @routes_bp.route("/call-technician", methods=["POST"])
@@ -55,22 +60,25 @@ def call_technician():
     This function retrieves the customer's phone number from the JSON request data,
     validates it, and then uses the Twilio API to initiate a call to the provided number.
     The call will play a message indicating that the customer is being connected to a technician.
-    Returns:
-        Response: A JSON response indicating the result of the call initiation.
-                  If the phone number is not provided, returns an error message with a 400 status code.
-                  If the call is successfully initiated, returns a success message with the call SID.
-    Raises:
-        KeyError: If the required Twilio configuration keys are not found in the current app config.
-    """
     
-    data = request.json
-    customer_phone = data.get("phone") if data else "+919767724238"
+    Returns:
+        A JSON response indicating the result of the call initiation. If the call is successfully initiated, returns a success message with the call SID.
+    Raises:
+        500, KeyError: If the required Twilio configuration keys are not found in the current app config.
+        500, Exception: If there is an issue with the Twilio API call or other exceptions.
+    """
+    try:
+        data = request.json
+        customer_phone = data.get("phone") if data else "+919767724238"
 
-    client = Client(current_app.config["TWILIO_ACCOUNT_SID"], current_app.config["TWILIO_AUTH_TOKEN"])
-    call = client.calls.create(
-        to=customer_phone,
-        from_=current_app.config["TWILIO_PHONE_NUMBER"],
-        twiml="<Response><Say>Connecting you to a technician.</Say></Response>"
-    )
-
-    return jsonify({"message": "Call initiated", "call_sid": call.sid})
+        client = Client(current_app.config["TWILIO_ACCOUNT_SID"], current_app.config["TWILIO_AUTH_TOKEN"])
+        call = client.calls.create(
+            to=customer_phone,
+            from_=current_app.config["TWILIO_PHONE_NUMBER"],
+            twiml="<Response><Say>Connecting you to a technician.</Say></Response>"
+        )
+        return jsonify({"message": "Call initiated", "call_sid": call.sid}), 200
+    except KeyError:
+        return jsonify({"error": "Twilio configuration missing"}), 500
+    except Exception as exception:
+        return jsonify({"error": str(exception)}), 500
