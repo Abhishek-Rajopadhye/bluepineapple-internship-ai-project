@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Login } from "./Login";
 import { Register } from "./Register"
 import { ChatBox } from "./Chatbox";
+
 /**
  * The main application component.
  * @component

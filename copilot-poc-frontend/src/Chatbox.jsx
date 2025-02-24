@@ -2,7 +2,21 @@ import { useState } from "react";
 import axios from "axios";
 import { Send, PhoneCall } from "lucide-react";
 
-const ChatBox = () =>{
+/**
+ * The main chatbox component.
+ * @component
+ * @name ChatBox
+ * @returns {JSX.Element} The rendered component.
+ * @property {Array<String>} messages The messages history of the user.
+ * @property {String} input The message/input prompt to send to the LLM.
+ * @property {boolean} loading The loading status of the application.
+ * @property {Function} setMessages The function to update the message history.
+ * @property {Function} setInput The function to update the input prompt.
+ * @property {Function} setLoading The function to update the loading status.
+ * @example
+ * return <ChatBox />;
+ */
+const ChatBox = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
@@ -22,7 +36,11 @@ const ChatBox = () =>{
         setLoading(true);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/copilot", { message: input });
+            const token = localStorage.getItem('access_token');
+            const response = await axios.post("http://localhost:5000/api/copilot", 
+                { message: input }, 
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             setMessages([...newMessages, { role: "copilot", text: response.data.reply }]);
         } catch (error) {
             console.error("Error fetching response:", error);
@@ -30,7 +48,7 @@ const ChatBox = () =>{
             setLoading(false);
         }
     };
- 
+
     /**
      * Initiates a call to a technician by sending a request to the backend API.
      * @name callTechnician
@@ -40,7 +58,11 @@ const ChatBox = () =>{
      */
     const callTechnician = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/call-technician");
+            const token = localStorage.getItem('access_token');
+            const response = await axios.post("http://localhost:5000/api/call-technician", 
+                {}, 
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             alert(response.data.message || "Calling technician...");
         } catch (error) {
             console.error("Error initiating call:", error);
@@ -75,4 +97,4 @@ const ChatBox = () =>{
     );
 }
 
-export {ChatBox};
+export { ChatBox };
