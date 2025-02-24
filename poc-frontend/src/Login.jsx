@@ -74,4 +74,4 @@ const Login = ({ onLoginSuccess, onClose }) => {
     );
 };
 
-export {Login};
+export { Login };

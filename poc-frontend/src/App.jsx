@@ -35,14 +35,22 @@ function App() {
 
     return (
         <div>
-            {isLoginSuccess && <ChatBox />}
+            {isLoginSuccess && (
+                <ChatBox />
+            )}
             {!isLoginSuccess && !showRegister && !showLogin && !isRegistrationComplete && (
                 <div>
                     <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button>
                     <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleRegisterClick}>Register</button>
                 </div>
             )}
-            {showRegister && <Register onClose={()=>{setShowRegister(false);}} onRegistrationComplete={() => setIsRegistrationComplete(true)} />}
+            {showRegister && (
+                <Register onClose={()=>{
+                    setShowRegister(false);
+                }} onRegistrationComplete={() => {
+                    setIsRegistrationComplete(true);
+                }} />
+            )}
             {(showLogin) && (
                 <Login onLoginSuccess={() => {
                     setIsLoginSuccess(true);
