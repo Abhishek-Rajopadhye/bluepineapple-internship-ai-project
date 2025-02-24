@@ -20,30 +20,35 @@ import { ChatBox } from "./Chatbox";
 function App() {
     const [isLoginSuccess, setIsLoginSuccess] = useState(false);
     const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
 
     const handleRegisterClick = () => {
         setShowRegister(true);
+        setShowLogin(false);
     };
 
     const handleLoginClick = () => {
+        setShowLogin(true);
         setShowRegister(false);
     };
 
     return (
         <div>
             {isLoginSuccess && <ChatBox />}
-            {!isLoginSuccess && !showRegister && (
+            {!isLoginSuccess && !showRegister && !showLogin && !isRegistrationComplete && (
                 <div>
-                    <button onClick={handleLoginClick}>Login</button>
-                    <button onClick={handleRegisterClick}>Register</button>
+                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button>
+                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleRegisterClick}>Register</button>
                 </div>
             )}
-            {!isLoginSuccess && showRegister && <Register onRegistrationComplete={() => setIsRegistrationComplete(true)} />}
-            {!isLoginSuccess && !showRegister && isRegistrationComplete && (
+            {showRegister && <Register onClose={()=>{setShowRegister(false);}} onRegistrationComplete={() => setIsRegistrationComplete(true)} />}
+            {(showLogin) && (
                 <Login onLoginSuccess={() => {
                     setIsLoginSuccess(true);
                     setIsRegistrationComplete(false);
+                }} onClose={()=>{
+                    setShowLogin(false);
                 }} />
             )}
         </div>

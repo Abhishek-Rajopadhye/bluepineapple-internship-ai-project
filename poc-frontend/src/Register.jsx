@@ -17,7 +17,7 @@ import axios from 'axios';
  * @property {Function} setConfirmPassword The function to update the confirmPassword on change in input box.
  * @property {Function} setError The function to set the error message on error.
  */
-const Register = ({onRegistrationComplete}) => {
+const Register = ({onRegistrationComplete, onClose}) => {
     const [emailId, setEmailId] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,7 +37,7 @@ const Register = ({onRegistrationComplete}) => {
             return;
         }
         try {
-            const response = await axios.post('/register', { emailId, password });
+            const response = await axios.post('http://localhost:5000/api/auth/register', { emailId:emailId, password:password });
             console.log('Registration successful', response.data);
             onRegistrationComplete();
         } catch (error) {
@@ -53,6 +53,7 @@ const Register = ({onRegistrationComplete}) => {
                 <div>
                     <label>Email ID:</label>
                     <input
+                        className='w-full p-2 border border-gray-300 rounded mt-1'
                         type="email"
                         value={emailId}
                         onChange={(e) => setEmailId(e.target.value)}
@@ -62,6 +63,7 @@ const Register = ({onRegistrationComplete}) => {
                 <div>
                     <label>Password:</label>
                     <input
+                        className='w-full p-2 border border-gray-300 rounded mt-1'
                         type="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
@@ -71,14 +73,16 @@ const Register = ({onRegistrationComplete}) => {
                 <div>
                     <label>Confirm Password:</label>
                     <input
+                        className='w-full p-2 border border-gray-300 rounded mt-1'
                         type="password"
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
                         required
                     />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Register</button>
+                {error && <p className='error text-red-500 mt-2 error'>{error}</p>}
+                <button onClick={onClose} className='bg-red-500 text-white p-2 rounded mt-3 hover:bg-red-700'>Cancel</button>
+                <button type="submit" className='bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700'>Register</button>
             </form>
         </div>
     );

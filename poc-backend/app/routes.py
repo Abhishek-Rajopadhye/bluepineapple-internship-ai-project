@@ -12,6 +12,7 @@ client = openai.OpenAI(
     api_key=api_key
 )
 
+@jwt_required
 @routes_bp.route("/copilot", methods=["POST"])
 def copilot_chat():
     """
@@ -53,6 +54,7 @@ def copilot_chat():
         return jsonify({"error": str(exception)}), 500
 
 
+@jwt_required
 @routes_bp.route("/call-technician", methods=["POST"])
 def call_technician():
     """

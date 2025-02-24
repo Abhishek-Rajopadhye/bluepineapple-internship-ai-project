@@ -40,7 +40,7 @@ def register():
     try:
         data = request.json
         hashed_password = bcrypt.generate_password_hash(data["password"]).decode("utf-8")
-        user = User(username=data["username"], password_hash=hashed_password)
+        user = User(username=data["emailId"], password_hash=hashed_password)
         db.session.add(user)
         db.session.commit()
         return jsonify({"message": "User registered successfully"}), 201
@@ -62,7 +62,7 @@ def login():
     """
     try:
         data = request.json
-        user = User.query.filter_by(username=data["username"]).first()
+        user = User.query.filter_by(username=data["emailId"]).first()
         if user and bcrypt.check_password_hash(user.password_hash, data["password"]):
             access_token = create_access_token(identity=user.id)
             return jsonify({"access_token": access_token}), 200

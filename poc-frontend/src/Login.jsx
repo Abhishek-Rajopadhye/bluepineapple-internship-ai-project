@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-
 /**
  * The Component that handles the login and auth of the user.
  * @component
@@ -16,7 +15,7 @@ import axios from 'axios';
  * @property {Function} setPassword The function to update the password on change in input box.
  * @property {Function} setError The function to set the error message on error.
  */
-const Login = ({ onLoginSuccess }) => {
+const Login = ({ onLoginSuccess, onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -31,7 +30,7 @@ const Login = ({ onLoginSuccess }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('/login', { email, password });
+            const response = await axios.post('http://localhost:5000/api/auth/login', { emailId:email, password:password });
             console.log(response.data);
             const { access_token } = response.data["access_token"];
             localStorage.setItem('access_token', access_token);
@@ -50,6 +49,7 @@ const Login = ({ onLoginSuccess }) => {
                 <div>
                     <label>Email:</label>
                     <input
+                        className='w-full p-2 border border-gray-300 rounded mt-1'
                         type="email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
@@ -59,14 +59,16 @@ const Login = ({ onLoginSuccess }) => {
                 <div>
                     <label>Password:</label>
                     <input
+                        className='w-full p-2 border border-gray-300 rounded mt-1'
                         type="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         required
                     />
                 </div>
-                {error && <p className="error">{error}</p>}
-                <button type="submit">Login</button>
+                {error && <p className="error text-red-500 mt-2">{error}</p>}
+                <button onClick={onClose} className='bg-red-500 text-white p-2 rounded mt-3 hover:bg-red-700'>Cancel</button>
+                <button type="submit" className='bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700'>Login</button>
             </form>
         </div>
     );

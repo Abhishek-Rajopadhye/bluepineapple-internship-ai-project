@@ -22,7 +22,7 @@ def create_app():
     db.init_app(app)
 
     # Register blueprints (modular routing)
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(routes_bp)
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(routes_bp, url_prefix="/api")
 
     return app

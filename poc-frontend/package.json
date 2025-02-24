@@ -1,5 +1,5 @@
 {
-  "name": "copilot-poc-frontend",
+  "name": "poc-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.7",
-    "@tailwindcss/vite": "^4.0.7",
+    "@tailwindcss/vite": "^4.0.8",
     "axios": "^1.7.9",
     "esbuild": "^0.25.0",
     "lucide-react": "^0.475.0",
@@ -30,7 +30,7 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "postcss": "^8.5.2",
-    "tailwindcss": "^4.0.7",
+    "tailwindcss": "^4.0.8",
     "vite": "^6.1.0"
   }
 }
