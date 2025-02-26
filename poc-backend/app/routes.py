@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify, current_app, session
 from flask_jwt_extended import jwt_required
 from twilio.rest import Client
 import openai
@@ -35,25 +35,31 @@ def llm_chat():
     data = request.json
     user_message = data.get("message", "")
 
-    chat_completion = client.chat.completions.create(
-        extra_body={},
-        model="meta-llama/llama-3.3-70b-instruct:free",
-        messages=[
-            {
-                "role": "user",
-                "content": user_message
-            }
-        ]
-    )
-    reply = chat_completion.choices[0].message.content
-    if not user_message:
-        return jsonify({"error": "No message provided"}), 400
+    if(user_message == ""):
+        return jsonify({"error": str(exception)}), 400
 
+    # Retrieve conversation history from session
+    conversation_history = session.get("conversation_history", [])
+
+    # Add the new user message to the conversation history
+    conversation_history.append({"role": "user", "content": user_message})
     try:
+        chat_completion = client.chat.completions.create(
+            extra_body={},
+            model="meta-llama/llama-3.3-70b-instruct:free",
+            messages=conversation_history
+        )
+        reply = chat_completion.choices[0].message.content
+
+        # Add the AI's reply to the conversation history
+        conversation_history.append({"role": "llm", "content": reply})
+
+        # Save the updated conversation history in the session
+        session["conversation_history"] = conversation_history
+
         return jsonify({"reply": reply})
     except Exception as exception:
         return jsonify({"error": str(exception)}), 500
-
 
 @jwt_required
 @routes_bp.route("/call-technician", methods=["POST"])

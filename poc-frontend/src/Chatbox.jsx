@@ -2,6 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { Send, PhoneCall } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGemoji from "remark-gemoji";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import 'katex/dist/katex.min.css';
+import 'highlight.js/styles/github.css';
+
 
 /**
  * The main chatbox component.
@@ -97,7 +107,12 @@ const ChatBox = () => {
                     ref={index === messages.length - 1 ? latestMessageRef : null}
                     className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                     <span className={`px-4 py-2 rounded-lg text-sm border m-5 ${msg.role === "user" ? "bg-blue-500 border-blue-700 text-white" : "bg-gray-700 border-gray-500 text-white"}`}>
-                        <ReactMarkdown>{msg.text}</ReactMarkdown>
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGemoji, remarkMath]}
+                            rehypePlugins={[rehypeKatex, rehypeHighlight, rehypeRaw, rehypeSlug, rehypeAutolinkHeadings]} 
+                        >
+                            {msg.text}
+                        </ReactMarkdown>
                     </span>
                 </div>
                 ))}
