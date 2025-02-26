@@ -33,7 +33,9 @@ const Login = ({ onLoginSuccess, onClose }) => {
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', { emailId:email, password:password });
             console.log(response.data["access_token"]);
-            const { access_token } = response.data["access_token"];
+            const access_token  = response.data["access_token"];
+            const user_id = response.data["user_id"];
+            localStorage.setItem('user_id', user_id);
             localStorage.setItem('access_token', access_token);
             onLoginSuccess();
             // Redirect or perform other actions after successful login

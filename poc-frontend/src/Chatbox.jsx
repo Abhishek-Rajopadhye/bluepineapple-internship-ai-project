@@ -50,9 +50,12 @@ const ChatBox = () => {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem('access_token');
-            const response = await axios.post("http://localhost:5000/api/llm", 
-                { message: input }, 
+            const token = localStorage.getItem('access_token').toString();
+            const response = await axios.post("http://localhost:5000/api/llm",
+                { 
+                    message: input,
+                    user_id: localStorage.getItem("user_id")
+                 },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setMessages([...newMessages, { role: "llm", text: response.data.reply }]);

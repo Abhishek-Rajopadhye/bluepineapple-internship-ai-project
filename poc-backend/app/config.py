@@ -14,6 +14,7 @@ class Config:
         OPENROUTER_API_KEY (str): API key given by OpenRouter, Fetched from environment variable.
     """
     #Generic Configuration
+    secret_key = os.getenv("SECRET_KEY", "secretestofsecretskey")
     SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
     SQLALCHEMY_DATABASE_URI = "sqlite:///poc.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False

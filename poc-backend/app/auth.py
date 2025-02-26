@@ -1,24 +1,11 @@
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import create_access_token, jwt_required, JWTManager
+from flask_jwt_extended import create_access_token
 from app.db import db
+from app.models import User
 
 auth_bp = Blueprint("auth", __name__)
 bcrypt = Bcrypt()
-jwt = JWTManager()
-
-class User(db.Model):
-    """
-    Represents a user in the application.
-
-    Attributes:
-        id (int): The unique identifier for the user.
-        username (str): The unique username for the user.
-        password_hash (str): The hashed password for the user.
-    """
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(256), nullable=False)
 
 @auth_bp.route("/register", methods=["POST"])
 def register():
@@ -64,7 +51,7 @@ def login():
         user = User.query.filter_by(username=data["emailId"]).first()
         if user and bcrypt.check_password_hash(user.password_hash, data["password"]):
             access_token = create_access_token(identity=user.id)
-            return jsonify({"access_token": access_token}), 200
+            return jsonify({"access_token": access_token, "user_id": user.id}), 200
         return jsonify({"error": "Invalid credentials"}), 401
     except Exception as exception:
         return jsonify({"error": "Internal Error" + str(exception)}), 500

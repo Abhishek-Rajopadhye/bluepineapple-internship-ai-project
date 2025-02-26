@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify, current_app, session
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from twilio.rest import Client
+from app.db import db
+from app.models import Conversation
 import openai
 import os
 
@@ -34,18 +36,23 @@ def llm_chat():
     """
     data = request.json
     user_message = data.get("message", "")
+    user_id = data.get("user_id", -1)
 
     if(user_message == ""):
         return jsonify({"error": str(exception)}), 400
 
-    # Retrieve conversation history from session
-    conversation_history = session.get("conversation_history", [])
+    # Retrieve conversation history from the database
+    conversation = Conversation.query.filter_by(user_id=user_id).first()
+    if conversation:
+        conversation_history = conversation.messages
+    else:
+        conversation_history = []
 
     # Add the new user message to the conversation history
     conversation_history.append({"role": "user", "content": user_message})
+
     try:
         chat_completion = client.chat.completions.create(
-            extra_body={},
             model="meta-llama/llama-3.3-70b-instruct:free",
             messages=conversation_history
         )
@@ -54,8 +61,13 @@ def llm_chat():
         # Add the AI's reply to the conversation history
         conversation_history.append({"role": "llm", "content": reply})
 
-        # Save the updated conversation history in the session
-        session["conversation_history"] = conversation_history
+        # Save the updated conversation history in the database
+        if conversation:
+            conversation.messages = conversation_history
+        else:
+            new_conversation = Conversation(user_id=user_id, messages=conversation_history)
+            db.session.add(new_conversation)
+        db.session.commit()
 
         return jsonify({"reply": reply})
     except Exception as exception:
