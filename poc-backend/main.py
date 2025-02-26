@@ -1,9 +1,7 @@
 from app import create_app
 from app.db import db
-from flask_jwt_extended import JWTManager
 
 app = create_app()
-jwt = JWTManager(app)
 
 # Create tables if they don't exist
 with app.app_context():

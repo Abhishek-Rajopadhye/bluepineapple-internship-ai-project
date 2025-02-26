@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
 from app.config import Config
 from app.db import db
 from app.auth import auth_bp
@@ -17,8 +19,9 @@ def create_app():
     """
     app = Flask(__name__)
     app.config.from_object(Config)
-
-    CORS(app)  # Enable CORS for frontend requests
+    JWTManager(app)
+    Bcrypt(app)
+    CORS(app)
     db.init_app(app)
 
     # Register blueprints (modular routing)

@@ -84,8 +84,8 @@ const Register = ({onRegistrationComplete, onClose}) => {
                     />
                 </div>
                 {error && <p className='error text-red-500 mt-2 error'>{error}</p>}
-                <button onClick={onClose} className='bg-red-500 text-white p-2 rounded mt-3 hover:bg-red-700'>Cancel</button>
-                <button type="submit" className='bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700'>Register</button>
+                <button onClick={onClose} className='bg-red-500 text-white p-2 rounded m-3 hover:bg-red-700'>Cancel</button>
+                <button type="submit" className='bg-blue-500 text-white p-2 rounded m-3 hover:bg-blue-700'>Register</button>
             </form>
         </div>
     );

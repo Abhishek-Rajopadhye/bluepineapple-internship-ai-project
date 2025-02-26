@@ -1,5 +1,5 @@
-from flask import Blueprint, request, jsonify, current_app, session
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask import Blueprint, request, jsonify, current_app
+from flask_jwt_extended import jwt_required
 from twilio.rest import Client
 from app.db import db
 from app.models import Conversation

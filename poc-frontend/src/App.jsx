@@ -34,14 +34,14 @@ function App() {
     };
 
     return (
-        <div className="flex flex-col h-screen w-screen bg-gray-900 text-white">
-            {isLoginSuccess && (
-                <ChatBox />
+        <div className="h-screen w-screen bg-gray-900 text-white">
+            {isLoginSuccess && (<div className="flex flex-col"><ChatBox /></div>
+
             )}
             {!isLoginSuccess && !showRegister && !showLogin && !isRegistrationComplete && (
-                <div>
-                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button> / 
-                    <button className="bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-700" onClick={handleRegisterClick}>Register</button>
+                <div className="flex flex-row object-right-top">
+                    <button className="bg-blue-500 text-white p-2 rounded m-2 mt-3 hover:bg-blue-700" onClick={handleLoginClick}>Login</button>
+                    <button className="bg-blue-500 text-white p-2 rounded m-2 mt-3 hover:bg-blue-700" onClick={handleRegisterClick}>Register</button>
                 </div>
             )}
             {showRegister && (
