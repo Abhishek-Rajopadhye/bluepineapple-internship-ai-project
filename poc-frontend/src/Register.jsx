@@ -25,6 +25,9 @@ const Register = ({onRegistrationComplete, onClose}) => {
 
     /**
      * The function that handles the communication with the backend on submit of registration form.
+     * Checks the password with the confirm password. If they do not match raises error.
+     * Send the data to backend server using POST method.
+     * Calls the onRegistrationComplete function prop on success else raises error.
      * @function
      * @name handleSubmit
      * @param {Event} event

@@ -22,6 +22,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
 
     /**
      * The function that handles the communication with the backend on submit of login form.
+     * Calls the onLoginSuccess Function prop on success, else raises error.
      * @function
      * @name handleSubmit
      * @param {Event} event

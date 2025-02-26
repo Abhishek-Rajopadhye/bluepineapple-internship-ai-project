@@ -19,6 +19,7 @@ def llm_chat():
     Endpoint to handle chat requests to the LLM AI model.
     This endpoint expects a POST request with a JSON payload containing a "message" field.
     It uses the llm model to generate a response based on the user's message.
+    Returns the reply on successful generation else raises error.
     Returns:
         JSON response containing the AI-generated reply or an error message.
     Raises:

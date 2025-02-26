@@ -25,6 +25,7 @@ const ChatBox = () => {
     const latestMessageRef = useRef(null);
     /**
      * Sends a message to the backend API and updates the messages state.
+     * Gets the reply and adds/appends the reply to the messages.
      * @name sendMessage
      * @async
      * @function
