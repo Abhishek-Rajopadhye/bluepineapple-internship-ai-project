@@ -1,29 +1,30 @@
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from a .env file (if present)
+load_dotenv()
 
 class Config:
     """
-    Configuration class for the application.
-    Attributes:
-        SECRET_KEY (str): Secret key for the application, default is 'supersecretkey'.
-        SQLALCHEMY_DATABASE_URI (str): URI for the SQLAlchemy database, default is 'sqlite:///copilot_poc.db'.
-        SQLALCHEMY_TRACK_MODIFICATIONS (bool): Flag to track modifications in SQLAlchemy, default is False.
-        JWT_SECRET_KEY (str): Secret key for JWT, default is 'jwtsecretkey'.
-        TWILIO_ACCOUNT_SID (str): Account SID for Twilio, fetched from environment variable.
-        TWILIO_AUTH_TOKEN (str): Auth token for Twilio, fetched from environment variable.
-        TWILIO_PHONE_NUMBER (str): Phone number for Twilio, fetched from environment variable.
-        OPENROUTER_API_KEY (str): API key given by OpenRouter, Fetched from environment variable.
+    Configuration class for the FastAPI application.
+    Loads environment variables and provides default values where necessary.
     """
-    #Generic Configuration
-    secret_key = os.getenv("SECRET_KEY", "secretestofsecretskey")
+
+    # General Configuration
     SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
-    SQLALCHEMY_DATABASE_URI = "sqlite:///poc.db"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "jwtsecretkey")
+
+    # Database Configuration
+    DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///poc.db")
 
     # Twilio Configuration
     TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
     TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
     TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
-    
-    #OpenRouter Configuration
-    OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+    # Hugging Face LLM API Configuration
+    HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
+    HUGGINGFACE_MODEL_URL = os.getenv(
+        "HUGGINGFACE_MODEL_URL",
+        "https://api-inference.huggingface.co/models/meta-llama/llama-3.3-70b-instruct"
+    )

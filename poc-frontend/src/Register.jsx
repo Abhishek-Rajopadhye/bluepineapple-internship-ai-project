@@ -40,7 +40,7 @@ const Register = ({onRegistrationComplete, onClose}) => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', { emailId:emailId, password:password });
+            const response = await axios.post('http://localhost:8000/api/auth/register', { emailId:emailId, password:password });
             console.log('Registration successful', response.data);
             onRegistrationComplete();
         } catch (error) {

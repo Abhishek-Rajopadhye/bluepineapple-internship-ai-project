@@ -31,7 +31,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', { emailId:email, password:password });
+            const response = await axios.post('http://localhost:8000/api/auth/login', { emailId:email, password:password });
             console.log(response.data["access_token"]);
             const access_token  = response.data["access_token"];
             const user_id = response.data["user_id"];
