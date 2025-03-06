@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">report.html</title>
+      <link href="assets\style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="title">report.html</h1>
+    <p>Report generated on 06-Mar-2025 at 15:10:50 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.1.1</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</th>
+        </tr>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left"><</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">></div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+        </div>
+        <p class="run-count">4 tests took 00:00:04.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" />
+            <span class="failed">2 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">2 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <span class="rerun">0 Reruns</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+      </div>
+      <div class="additional-summary postfix">
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.13.2&#34;, &#34;Platform&#34;: &#34;Windows-11-10.0.22635-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.3.5&#34;, &#34;pluggy&#34;: &#34;1.5.0&#34;}, &#34;Plugins&#34;: {&#34;anyio&#34;: &#34;4.8.0&#34;, &#34;asyncio&#34;: &#34;0.25.3&#34;, &#34;cov&#34;: &#34;6.0.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}}, &#34;tests&#34;: {&#34;tests/test_call.py::test_call_technician&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_call.py::test_call_technician&#34;, &#34;duration&#34;: &#34;22 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_call.py::test_call_technician&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;22 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;tests/test_llm.py::test_llm_chat&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;tests/test_llm.py::test_llm_chat&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_llm.py::test_llm_chat&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;client = &amp;lt;httpx.AsyncClient object at 0x00000270F8289940&amp;gt;\n\n    @pytest.mark.asyncio\n    async def test_llm_chat(client):\n        &amp;quot;&amp;quot;&amp;quot;\n        Test sending a chat message to the LLM API.\n    \n        Registers a user, logs in, and sends a message to the LLM.\n    \n        Parameters:\n            client (AsyncClient): The test HTTP client.\n    \n        Asserts:\n            - The response status code is 200 (OK).\n            - The response contains a valid reply from the LLM.\n        &amp;quot;&amp;quot;&amp;quot;\n        await client.post(&amp;quot;/api/auth/register&amp;quot;, json={&amp;quot;emailId&amp;quot;: &amp;quot;testuser@example.com&amp;quot;, &amp;quot;password&amp;quot;: &amp;quot;testpass&amp;quot;})\n    \n        # Login user and print response for debugging\n        login_response = await client.post(&amp;quot;/api/auth/login&amp;quot;, json={&amp;quot;emailId&amp;quot;: &amp;quot;testuser@example.com&amp;quot;, &amp;quot;password&amp;quot;: &amp;quot;testpass&amp;quot;})\n    \n        assert login_response.status_code == 200, &amp;quot;Login request failed&amp;quot;\n        assert &amp;quot;access_token&amp;quot; in login_response.json(), &amp;quot;Login response does not contain access_token&amp;quot;\n    \n        token = login_response.json()[&amp;quot;access_token&amp;quot;]\n        headers = {&amp;quot;Authorization&amp;quot;: f&amp;quot;Bearer {token}&amp;quot;}\n    \n    \n        with patch(&amp;quot;app.services.llm_service.query_llm&amp;quot;, new_callable=AsyncMock) as mock_llm:\n            mock_llm.return_value = &amp;quot;Hello, how can I help you?&amp;quot;\n            response = await client.post(&amp;quot;/api/llm/&amp;quot;, json={&amp;quot;message&amp;quot;: &amp;quot;Hello&amp;quot;}, headers=headers)\n    \n&amp;gt;       assert response.status_code == 200\nE       assert 500 == 200\nE        +  where 500 = &amp;lt;Response [500 Internal Server Error]&amp;gt;.status_code\n\ntests\\test_llm.py:34: AssertionError\n\n----------------------------- Captured stdout call -----------------------------\n2025-03-06 15:10:46,103 INFO sqlalchemy.engine.Engine BEGIN (implicit)\n2025-03-06 15:10:46,111 INFO sqlalchemy.engine.Engine SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.username = ?\n2025-03-06 15:10:46,111 INFO sqlalchemy.engine.Engine [generated in 0.00069s] (&amp;#x27;testuser@example.com&amp;#x27;,)\nError registering user: 400: Username already taken\n2025-03-06 15:10:46,115 INFO sqlalchemy.engine.Engine ROLLBACK\n2025-03-06 15:10:46,122 INFO sqlalchemy.engine.Engine BEGIN (implicit)\n2025-03-06 15:10:46,123 INFO sqlalchemy.engine.Engine SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.username = ?\n2025-03-06 15:10:46,124 INFO sqlalchemy.engine.Engine [cached since 0.01297s ago] (&amp;#x27;testuser@example.com&amp;#x27;,)\n2025-03-06 15:10:46,536 INFO sqlalchemy.engine.Engine ROLLBACK\n2025-03-06 15:10:46,547 INFO sqlalchemy.engine.Engine BEGIN (implicit)\n2025-03-06 15:10:46,549 INFO sqlalchemy.engine.Engine SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.id = ?\n2025-03-06 15:10:46,550 INFO sqlalchemy.engine.Engine [generated in 0.00052s] (&amp;#x27;2&amp;#x27;,)\n2025-03-06 15:10:46,556 INFO sqlalchemy.engine.Engine SELECT conversations.id, conversations.user_id, conversations.messages \nFROM conversations \nWHERE conversations.user_id = ?\n2025-03-06 15:10:46,557 INFO sqlalchemy.engine.Engine [generated in 0.00060s] (2,)\nAn error occurred: 402 Client Error: Payment Required for url: https://router.huggingface.co/nebius/v1/chat/completions (Request ID: Root=1-67c96d9f-09852b4274cc8255026cb97f;46560edc-c736-4cba-bbb6-08ab7564e07e)\n\nYou have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly allowance.\nError during chat request: 402 Client Error: Payment Required for url: https://router.huggingface.co/nebius/v1/chat/completions (Request ID: Root=1-67c96d9f-09852b4274cc8255026cb97f;46560edc-c736-4cba-bbb6-08ab7564e07e)\n\nYou have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly allowance.\n2025-03-06 15:10:48,558 INFO sqlalchemy.engine.Engine ROLLBACK\n\n------------------------------ Captured log call -------------------------------\nINFO     sqlalchemy.engine.Engine:base.py:2699 BEGIN (implicit)\nINFO     sqlalchemy.engine.Engine:base.py:1843 SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.username = ?\nINFO     sqlalchemy.engine.Engine:base.py:1843 [generated in 0.00069s] (&amp;#x27;testuser@example.com&amp;#x27;,)\nINFO     sqlalchemy.engine.Engine:base.py:2702 ROLLBACK\nINFO     sqlalchemy.engine.Engine:base.py:2699 BEGIN (implicit)\nINFO     sqlalchemy.engine.Engine:base.py:1843 SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.username = ?\nINFO     sqlalchemy.engine.Engine:base.py:1843 [cached since 0.01297s ago] (&amp;#x27;testuser@example.com&amp;#x27;,)\nWARNING  passlib.handlers.bcrypt:bcrypt.py:622 (trapped) error reading bcrypt version\nTraceback (most recent call last):\n  File &amp;quot;C:\\Prof\\Internship\\bluepineapple-internship-ai-project\\poc-backend\\.venv\\Lib\\site-packages\\passlib\\handlers\\bcrypt.py&amp;quot;, line 620, in _load_backend_mixin\n    version = _bcrypt.__about__.__version__\n              ^^^^^^^^^^^^^^^^^\nAttributeError: module &amp;#x27;bcrypt&amp;#x27; has no attribute &amp;#x27;__about__&amp;#x27;\nINFO     sqlalchemy.engine.Engine:base.py:2702 ROLLBACK\nINFO     sqlalchemy.engine.Engine:base.py:2699 BEGIN (implicit)\nINFO     sqlalchemy.engine.Engine:base.py:1843 SELECT users.id, users.username, users.password_hash \nFROM users \nWHERE users.id = ?\nINFO     sqlalchemy.engine.Engine:base.py:1843 [generated in 0.00052s] (&amp;#x27;2&amp;#x27;,)\nINFO     sqlalchemy.engine.Engine:base.py:1843 SELECT conversations.id, conversations.user_id, conversations.messages \nFROM conversations \nWHERE conversations.user_id = ?\nINFO     sqlalchemy.engine.Engine:base.py:1843 [generated in 0.00060s] (2,)\nINFO     sqlalchemy.engine.Engine:base.py:2702 ROLLBACK\n\n&#34;}], &#34;tests/test_services.py::test_generate_jitsi_link&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_services.py::test_generate_jitsi_link&#34;, &#34;duration&#34;: &#34;4 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_services.py::test_generate_jitsi_link&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;4 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;tests/test_services.py::test_query_llm&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;tests/test_services.py::test_query_llm&#34;, &#34;duration&#34;: &#34;00:00:01&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_services.py::test_query_llm&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:01&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;response = &amp;lt;Response [402]&amp;gt;, endpoint_name = None\n\n    def hf_raise_for_status(response: Response, endpoint_name: Optional[str] = None) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;\n        Internal version of `response.raise_for_status()` that will refine a\n        potential HTTPError. Raised exception will be an instance of `HfHubHTTPError`.\n    \n        This helper is meant to be the unique method to raise_for_status when making a call\n        to the Hugging Face Hub.\n    \n    \n        Example:\n        ```py\n            import requests\n            from huggingface_hub.utils import get_session, hf_raise_for_status, HfHubHTTPError\n    \n            response = get_session().post(...)\n            try:\n                hf_raise_for_status(response)\n            except HfHubHTTPError as e:\n                print(str(e)) # formatted message\n                e.request_id, e.server_message # details returned by server\n    \n                # Complete the error message with additional information once it&amp;#x27;s raised\n                e.append_to_message(&amp;quot;\\n`create_commit` expects the repository to exist.&amp;quot;)\n                raise\n        ```\n    \n        Args:\n            response (`Response`):\n                Response from the server.\n            endpoint_name (`str`, *optional*):\n                Name of the endpoint that has been called. If provided, the error message\n                will be more complete.\n    \n        &amp;lt;Tip warning={true}&amp;gt;\n    \n        Raises when the request has failed:\n    \n            - [`~utils.RepositoryNotFoundError`]\n                If the repository to download from cannot be found. This may be because it\n                doesn&amp;#x27;t exist, because `repo_type` is not set correctly, or because the repo\n                is `private` and you do not have access.\n            - [`~utils.GatedRepoError`]\n                If the repository exists but is gated and the user is not on the authorized\n                list.\n            - [`~utils.RevisionNotFoundError`]\n                If the repository exists but the revision couldn&amp;#x27;t be find.\n            - [`~utils.EntryNotFoundError`]\n                If the repository exists but the entry (e.g. the requested file) couldn&amp;#x27;t be\n                find.\n            - [`~utils.BadRequestError`]\n                If request failed with a HTTP 400 BadRequest error.\n            - [`~utils.HfHubHTTPError`]\n                If request failed for a reason not listed above.\n    \n        &amp;lt;/Tip&amp;gt;\n        &amp;quot;&amp;quot;&amp;quot;\n        try:\n&amp;gt;           response.raise_for_status()\n\n.venv\\Lib\\site-packages\\huggingface_hub\\utils\\_http.py:409: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = &amp;lt;Response [402]&amp;gt;\n\n    def raise_for_status(self):\n        &amp;quot;&amp;quot;&amp;quot;Raises :class:`HTTPError`, if one occurred.&amp;quot;&amp;quot;&amp;quot;\n    \n        http_error_msg = &amp;quot;&amp;quot;\n        if isinstance(self.reason, bytes):\n            # We attempt to decode utf-8 first because some servers\n            # choose to localize their reason strings. If the string\n            # isn&amp;#x27;t utf-8, we fall back to iso-8859-1 for all other\n            # encodings. (See PR #3538)\n            try:\n                reason = self.reason.decode(&amp;quot;utf-8&amp;quot;)\n            except UnicodeDecodeError:\n                reason = self.reason.decode(&amp;quot;iso-8859-1&amp;quot;)\n        else:\n            reason = self.reason\n    \n        if 400 &amp;lt;= self.status_code &amp;lt; 500:\n            http_error_msg = (\n                f&amp;quot;{self.status_code} Client Error: {reason} for url: {self.url}&amp;quot;\n            )\n    \n        elif 500 &amp;lt;= self.status_code &amp;lt; 600:\n            http_error_msg = (\n                f&amp;quot;{self.status_code} Server Error: {reason} for url: {self.url}&amp;quot;\n            )\n    \n        if http_error_msg:\n&amp;gt;           raise HTTPError(http_error_msg, response=self)\nE           requests.exceptions.HTTPError: 402 Client Error: Payment Required for url: https://router.huggingface.co/nebius/v1/chat/completions\n\n.venv\\Lib\\site-packages\\requests\\models.py:1024: HTTPError\n\nThe above exception was the direct cause of the following exception:\n\n    @pytest.mark.asyncio\n    async def test_query_llm():\n        &amp;quot;&amp;quot;&amp;quot;\n        Test the LLM service function.\n    \n        Uses a mock API response to test `query_llm`.\n    \n        Asserts:\n            - The function correctly returns the mock AI response.\n        &amp;quot;&amp;quot;&amp;quot;\n        with patch(&amp;quot;httpx.AsyncClient.post&amp;quot;, new_callable=AsyncMock) as mock_post:\n            mock_post.return_value.json.return_value = [{&amp;quot;generated_text&amp;quot;: &amp;quot;Hello! How can I help you today?&amp;quot;}]\n&amp;gt;           response = await query_llm([{&amp;quot;role&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;content&amp;quot;: &amp;quot;Hello. Please say Hello! How can I help you today?&amp;quot;}])\n\ntests\\test_services.py:28: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \napp\\services\\llm_service.py:31: in query_llm\n    completion = huggingfaceClient.chat.completions.create(\n.venv\\Lib\\site-packages\\huggingface_hub\\inference\\_client.py:956: in chat_completion\n    data = self._inner_post(request_parameters, stream=stream)\n.venv\\Lib\\site-packages\\huggingface_hub\\inference\\_client.py:321: in _inner_post\n    hf_raise_for_status(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nresponse = &amp;lt;Response [402]&amp;gt;, endpoint_name = None\n\n    def hf_raise_for_status(response: Response, endpoint_name: Optional[str] = None) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;\n        Internal version of `response.raise_for_status()` that will refine a\n        potential HTTPError. Raised exception will be an instance of `HfHubHTTPError`.\n    \n        This helper is meant to be the unique method to raise_for_status when making a call\n        to the Hugging Face Hub.\n    \n    \n        Example:\n        ```py\n            import requests\n            from huggingface_hub.utils import get_session, hf_raise_for_status, HfHubHTTPError\n    \n            response = get_session().post(...)\n            try:\n                hf_raise_for_status(response)\n            except HfHubHTTPError as e:\n                print(str(e)) # formatted message\n                e.request_id, e.server_message # details returned by server\n    \n                # Complete the error message with additional information once it&amp;#x27;s raised\n                e.append_to_message(&amp;quot;\\n`create_commit` expects the repository to exist.&amp;quot;)\n                raise\n        ```\n    \n        Args:\n            response (`Response`):\n                Response from the server.\n            endpoint_name (`str`, *optional*):\n                Name of the endpoint that has been called. If provided, the error message\n                will be more complete.\n    \n        &amp;lt;Tip warning={true}&amp;gt;\n    \n        Raises when the request has failed:\n    \n            - [`~utils.RepositoryNotFoundError`]\n                If the repository to download from cannot be found. This may be because it\n                doesn&amp;#x27;t exist, because `repo_type` is not set correctly, or because the repo\n                is `private` and you do not have access.\n            - [`~utils.GatedRepoError`]\n                If the repository exists but is gated and the user is not on the authorized\n                list.\n            - [`~utils.RevisionNotFoundError`]\n                If the repository exists but the revision couldn&amp;#x27;t be find.\n            - [`~utils.EntryNotFoundError`]\n                If the repository exists but the entry (e.g. the requested file) couldn&amp;#x27;t be\n                find.\n            - [`~utils.BadRequestError`]\n                If request failed with a HTTP 400 BadRequest error.\n            - [`~utils.HfHubHTTPError`]\n                If request failed for a reason not listed above.\n    \n        &amp;lt;/Tip&amp;gt;\n        &amp;quot;&amp;quot;&amp;quot;\n        try:\n            response.raise_for_status()\n        except HTTPError as e:\n            error_code = response.headers.get(&amp;quot;X-Error-Code&amp;quot;)\n            error_message = response.headers.get(&amp;quot;X-Error-Message&amp;quot;)\n    \n            if error_code == &amp;quot;RevisionNotFound&amp;quot;:\n                message = f&amp;quot;{response.status_code} Client Error.&amp;quot; + &amp;quot;\\n\\n&amp;quot; + f&amp;quot;Revision Not Found for url: {response.url}.&amp;quot;\n                raise _format(RevisionNotFoundError, message, response) from e\n    \n            elif error_code == &amp;quot;EntryNotFound&amp;quot;:\n                message = f&amp;quot;{response.status_code} Client Error.&amp;quot; + &amp;quot;\\n\\n&amp;quot; + f&amp;quot;Entry Not Found for url: {response.url}.&amp;quot;\n                raise _format(EntryNotFoundError, message, response) from e\n    \n            elif error_code == &amp;quot;GatedRepo&amp;quot;:\n                message = (\n                    f&amp;quot;{response.status_code} Client Error.&amp;quot; + &amp;quot;\\n\\n&amp;quot; + f&amp;quot;Cannot access gated repo for url {response.url}.&amp;quot;\n                )\n                raise _format(GatedRepoError, message, response) from e\n    \n            elif error_message == &amp;quot;Access to this resource is disabled.&amp;quot;:\n                message = (\n                    f&amp;quot;{response.status_code} Client Error.&amp;quot;\n                    + &amp;quot;\\n\\n&amp;quot;\n                    + f&amp;quot;Cannot access repository for url {response.url}.&amp;quot;\n                    + &amp;quot;\\n&amp;quot;\n                    + &amp;quot;Access to this resource is disabled.&amp;quot;\n                )\n                raise _format(DisabledRepoError, message, response) from e\n    \n            elif error_code == &amp;quot;RepoNotFound&amp;quot; or (\n                response.status_code == 401\n                and error_message != &amp;quot;Invalid credentials in Authorization header&amp;quot;\n                and response.request is not None\n                and response.request.url is not None\n                and REPO_API_REGEX.search(response.request.url) is not None\n            ):\n                # 401 is misleading as it is returned for:\n                #    - private and gated repos if user is not authenticated\n                #    - missing repos\n                # =&amp;gt; for now, we process them as `RepoNotFound` anyway.\n                # See https://gist.github.com/Wauplin/46c27ad266b15998ce56a6603796f0b9\n                message = (\n                    f&amp;quot;{response.status_code} Client Error.&amp;quot;\n                    + &amp;quot;\\n\\n&amp;quot;\n                    + f&amp;quot;Repository Not Found for url: {response.url}.&amp;quot;\n                    + &amp;quot;\\nPlease make sure you specified the correct `repo_id` and&amp;quot;\n                    &amp;quot; `repo_type`.\\nIf you are trying to access a private or gated repo,&amp;quot;\n                    &amp;quot; make sure you are authenticated.&amp;quot;\n                )\n                raise _format(RepositoryNotFoundError, message, response) from e\n    \n            elif response.status_code == 400:\n                message = (\n                    f&amp;quot;\\n\\nBad request for {endpoint_name} endpoint:&amp;quot; if endpoint_name is not None else &amp;quot;\\n\\nBad request:&amp;quot;\n                )\n                raise _format(BadRequestError, message, response) from e\n    \n            elif response.status_code == 403:\n                message = (\n                    f&amp;quot;\\n\\n{response.status_code} Forbidden: {error_message}.&amp;quot;\n                    + f&amp;quot;\\nCannot access content at: {response.url}.&amp;quot;\n                    + &amp;quot;\\nMake sure your token has the correct permissions.&amp;quot;\n                )\n                raise _format(HfHubHTTPError, message, response) from e\n    \n            elif response.status_code == 416:\n                range_header = response.request.headers.get(&amp;quot;Range&amp;quot;)\n                message = f&amp;quot;{e}. Requested range: {range_header}. Content-Range: {response.headers.get(&amp;#x27;Content-Range&amp;#x27;)}.&amp;quot;\n                raise _format(HfHubHTTPError, message, response) from e\n    \n            # Convert `HTTPError` into a `HfHubHTTPError` to display request information\n            # as well (request id and/or server error message)\n&amp;gt;           raise _format(HfHubHTTPError, str(e), response) from e\nE           huggingface_hub.errors.HfHubHTTPError: 402 Client Error: Payment Required for url: https://router.huggingface.co/nebius/v1/chat/completions (Request ID: Root=1-67c96da1-5618f05d331fac452044c0e7;24f26731-8bad-4383-840c-a5d158e756f2)\nE           \nE           You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly allowance.\n\n.venv\\Lib\\site-packages\\huggingface_hub\\utils\\_http.py:481: HfHubHTTPError\n\n----------------------------- Captured stdout call -----------------------------\nAn error occurred: 402 Client Error: Payment Required for url: https://router.huggingface.co/nebius/v1/chat/completions (Request ID: Root=1-67c96da1-5618f05d331fac452044c0e7;24f26731-8bad-4383-840c-a5d158e756f2)\n\nYou have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly allowance.\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report.html&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > td')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > td')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+</html>

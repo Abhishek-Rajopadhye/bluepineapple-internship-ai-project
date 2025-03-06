@@ -1,0 +1,73 @@
+import pytest
+
+@pytest.mark.asyncio
+async def test_register(client):
+    """
+    Test user registration.
+
+    Sends a request to register a new user and verifies the response.
+
+    Parameters:
+        client (AsyncClient): The test HTTP client.
+
+    Asserts:
+        - The response status code is 201 (Created).
+        - The success message is returned.
+    """
+    response = await client.post("/api/auth/register", json={"emailId": "testuser@example.com", "password": "testpass"})
+    assert response.status_code == 201
+    assert response.json()["message"] == "User registered successfully"
+
+@pytest.mark.asyncio
+async def test_register_duplicate_user(client):
+    """
+    Test duplicate user registration.
+
+    Attempts to register a user with the same email twice.
+
+    Parameters:
+        client (AsyncClient): The test HTTP client.
+
+    Asserts:
+        - The response status code is 400 (Bad Request).
+        - The error message is "Username already taken".
+    """
+    await client.post("/api/auth/register", json={"emailId": "testuser@example.com", "password": "testpass"})
+    response = await client.post("/api/auth/register", json={"emailId": "testuser@example.com", "password": "newpass"})
+    assert response.status_code == 400
+    assert response.json()["detail"] == "Username already taken"
+
+@pytest.mark.asyncio
+async def test_login_success(client):
+    """
+    Test successful user login.
+
+    Registers a user and logs in with valid credentials.
+
+    Parameters:
+        client (AsyncClient): The test HTTP client.
+
+    Asserts:
+        - The response status code is 200 (OK).
+        - A valid access token is returned.
+    """
+    await client.post("/api/auth/register", json={"emailId": "testuser@example.com", "password": "testpass"})
+    response = await client.post("/api/auth/login", json={"emailId": "testuser@example.com", "password": "testpass"})
+    assert response.status_code == 200
+    assert "access_token" in response.json()
+
+@pytest.mark.asyncio
+async def test_login_invalid_credentials(client):
+    """
+    Test login with incorrect credentials.
+
+    Attempts to log in with an incorrect username and password.
+
+    Parameters:
+        client (AsyncClient): The test HTTP client.
+
+    Asserts:
+        - The response status code is 401 (Unauthorized).
+    """
+    response = await client.post("/api/auth/login", json={"emailId": "wronguser@example.com", "password": "wrongpass"})
+    assert response.status_code == 401
