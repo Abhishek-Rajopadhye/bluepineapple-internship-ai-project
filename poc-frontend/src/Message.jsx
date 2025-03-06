@@ -24,6 +24,7 @@ const Message = ({ msg }) => {
         </div>
     );
 };
+
 Message.displayName = "Message";
 
 Message.propTypes = {

@@ -18,10 +18,22 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
 
+
+@router.get("/history")
+async def getHistory(db: AsyncSession = Depends(get_db), current_user=Depends(get_current_user)):
+    """
+    Handles the loading of the conversation history on load of app.
+    Returns:
+        history (list): The conversation history
+    """
+    result = await db.execute(select(Conversation).where(Conversation.user_id == current_user.id))
+    conversation = result.scalars().first()
+    conversation_history: List[Dict[str, str]] = conversation.messages if conversation else []
+    print(conversation_history)
+    return {"history": conversation_history}
+
 @router.post("/", response_model=ChatResponse)
-async def llm_chat(request: ChatRequest, 
-                   db: AsyncSession = Depends(get_db), 
-                   current_user=Depends(get_current_user)):
+async def llm_chat(request: ChatRequest, db: AsyncSession = Depends(get_db), current_user=Depends(get_current_user)):
     """
     Handle chat requests to the LLM AI model.
     """

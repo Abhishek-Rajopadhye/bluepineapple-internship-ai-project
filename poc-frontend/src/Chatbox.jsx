@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { Send } from "lucide-react";
-import Message from "./Message";
-import CallButton from "./CallButton";
+import { Message } from "./Message";
+import { CallButton } from "./CallButton";
 
 /**
  * The main chatbox component.
@@ -17,6 +17,22 @@ const ChatBox = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const latestMessageRef = useRef(null);
+
+    const fetchPreviousMessages = async () => {
+        const token = localStorage.getItem("access_token");
+        const response = await axios.get("http://localhost:8000/api/llm/history",
+            { headers: { Authorization: `Bearer ${token}` } })
+        
+            if(response.status != 200){
+            throw new Error("Network Error");
+        }
+
+        const history = response.data["history"].map((item) => ({
+            text: item.content,
+            role: item.role
+        }));
+        setMessages(history);
+    };
 
     const sendMessage = async () => {
         if (!input.trim()) return;
@@ -46,6 +62,10 @@ const ChatBox = () => {
             latestMessageRef.current.scrollIntoView({ behavior: "smooth" });
         }
     }, [messages]);
+
+    useEffect(() => {
+        fetchPreviousMessages();
+    }, []);
 
     return (
         <div className="flex flex-col h-screen w-screen bg-gray-900 text-white">

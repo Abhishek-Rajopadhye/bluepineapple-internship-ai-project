@@ -21,6 +21,7 @@ class UserLogin(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    user_id: int
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)
 async def register(user_data: UserRegister, db: AsyncSession = Depends(get_db)):
@@ -57,7 +58,7 @@ async def login(user_data: UserLogin, db: AsyncSession = Depends(get_db)):
     # Generate access token
     access_token = create_access_token(data={"sub": str(user.id)})
     
-    return {"access_token": access_token}
+    return {"access_token": access_token, "user_id": user.id }
 
 @router.get("/me")
 async def get_current_user_info(current_user: User = Depends(get_current_user)):
