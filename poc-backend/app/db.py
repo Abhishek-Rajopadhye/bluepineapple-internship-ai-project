@@ -1,5 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import text
 from app.config import Config
 import asyncio
@@ -18,32 +19,55 @@ AsyncSessionLocal = sessionmaker(
 # Base class for models
 Base = declarative_base()
 
-# Dependency function to get a database session
 async def get_db():
+    """
+    Dependency function to get a database session.
+
+    Yields:
+        AsyncSession: An asynchronous database session.
+    """
     async with AsyncSessionLocal() as session:
         yield session
 
-# Function to check if tables exist & create them if missing
 async def ensure_tables_exist():
-    async with engine.begin() as conn:
-        # Check if 'users' table exists
-        result = await conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='users'"))
-        users_table_exists = result.scalar() is not None
+    """
+    Function to check if 'users' and 'conversations' tables exist and create them if missing.
 
-        # Check if 'conversations' table exists
-        result = await conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='conversations'"))
-        conversations_table_exists = result.scalar() is not None
+    Raises:
+        SQLAlchemyError: If there is an error executing the SQL commands.
+    """
+    try:
+        async with engine.begin() as conn:
+            result = await conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='users'"))
+            users_table_exists = result.scalar() is not None
 
-        # If tables don't exist, create them
-        if not users_table_exists or not conversations_table_exists:
-            print("🔹 Tables not found, creating tables...")
-            await conn.run_sync(Base.metadata.create_all)
-        else:
-            print("All tables exist.")
+            result = await conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='conversations'"))
+            conversations_table_exists = result.scalar() is not None
 
-# Function to initialize the database
+            if not users_table_exists or not conversations_table_exists:
+                print("🔹 Tables not found, creating tables...")
+                await conn.run_sync(Base.metadata.create_all)
+            else:
+                print("All tables exist.")
+    except SQLAlchemyError as sqlError:
+        print(sqlError)
+
 async def init_db():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    """
+    Function to initialize the database by creating all tables.
 
-asyncio.run(ensure_tables_exist())
+    Raises:
+        SQLAlchemyError: If there is an error executing the SQL commands.
+    """
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+    except SQLAlchemyError as sqlError:
+        print(f"Error initializing the database: {sqlError}")
+        raise
+
+# Run the ensure_tables_exist function to check and create tables if necessary
+try:
+    asyncio.run(ensure_tables_exist())
+except SQLAlchemyError as sqlError:
+    print(f"Error running ensure_tables_exist: {sqlError}")
